@@ -1,0 +1,23 @@
+{
+  "name": "docker_project",
+  "version": "1.0.0",
+  "description": "🐳Docker + CI를 기반한 NodeJS + ReactJS 프로젝트",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minsgy/Docker_CI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minsgy/Docker_CI/issues"
+  },
+  "homepage": "https://github.com/minsgy/Docker_CI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
