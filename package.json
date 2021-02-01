@@ -17,7 +17,9 @@
     "url": "https://github.com/minsgy/Docker_CI/issues"
   },
   "homepage": "https://github.com/minsgy/Docker_CI#readme",
-  "dependencies": {
-    "express": "^4.17.1"
+  "dependencies" : {
+    "express": "4.17.1",
+    "redis": "3.0.2"
   }
+
 }
