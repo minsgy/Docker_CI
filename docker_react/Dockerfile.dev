@@ -1,0 +1,22 @@
+
+# React의 경우, -it를 추가해야함. (-i : 상호 입출력, -t: tty를 활성화하여 bash 쉘 사용)
+# 도커 컨테이너 배포 : `docker build -f Dockerfile.dev ./`
+# 포트 연결 후 시작 : `docker run -it(필수, 없으면 바로 빠져나온당.) -p 3000:3000 <도커아이디>/<컨테이너 주제>`
+
+# Volumn 사용하기 ( -v : volumn)
+# docker run -p 3000:3000 -v /usr/src/app/node_modules -v $(pwd):/usr/src/app <이미지ID>
+# 호스트 디렉토리에 node_modules이 없기에 컨테이너에 맵핑X
+# pwd 경로에 있는 디렉토리 혹은 파일을 /user/src/app 경로에서 참조
+# 참조 받을 로컬 경로 : 참조 해서 적용 시킬 컨테이너 경로
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+# 종속성 먼저 복사해주고, 다 다운받고나서 소스에 대한 부분.
+COPY package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "run" , "start"]
