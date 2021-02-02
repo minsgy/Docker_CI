@@ -11,5 +11,14 @@ services: # 사용하려는 컨테이너 정의
       - ./:/usr/src/app
     stdin_open: true 
     # React 앱을 끌때 필요함(버그수정을 위해서)
-
-
+  
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    command: ["npm", "run", "test"]
+  
+  
