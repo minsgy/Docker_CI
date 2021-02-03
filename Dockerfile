@@ -13,6 +13,7 @@ RUN npm run build
 # 2단계 Run Stage
 # 첫번째 단계에서 생성 된 빌드 폴더의 파일들을 웹 브라우저의 요청에 따라 제공한다.
 FROM nginx
+EXPOSE 80
 
 # [--from==builder] 다른 Stage에 있는 파일을 복사할 때 다른 Stage이름 명시.
 # [/usr/src/app/build] builder stage에서 생성된 파일은 /usr/src/app/build에 들어가게 되며,
