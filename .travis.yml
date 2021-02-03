@@ -15,20 +15,15 @@ script: # 빌드 후 테스트
   - docker run -e CI=true alstjrchl97/docker-react-app npm run test -- --coverage
   # 이미지를 이용하여, 컨테이너 생성 후 "npm run test" -- --coverage의 경우, 상세한 내역이 출력시킴
 
-after_success:
- - echo "Test Success"
-
 # Bucket Name : elasticbeanstalk-us-west-2-345145132436
-
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
   app: "docker-react-app"
-  env: "Dockerreactapp-env"
+  env: "DockerReactapp-env"
   bucket_name: "elasticbeanstalk-us-east-1-053195428231"
   bucket_path: "docker-react-app"
   on:
     branch: main
-
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_ACCESS_KEY
