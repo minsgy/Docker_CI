@@ -8,18 +8,18 @@ services:
 
 # 이미지 생성하기
 before_install:
-  - docker build -t alstjrchl97/docker-front -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t alstjrchl97/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
 # 하나 하나의 프로젝트 테스트 실행하기
 script:
-  - docker run -e CI=true alstjrchl97/docker-front npm run test
+  - docker run -e CI=true alstjrchl97/react-test-app npm test
 
 # 테스트 성공
 
 # 운영 환경 이미지로 만들기 (Dockerfile 이므로, 경로 설정 필요없음.)
 after_success:
   - docker build -t alstjrchl97/docker-frontend ./frontend
-  - docker build -t alstjrchl97/docker-backend ./backend
+  - docker build -t alstjrchl97/docker-backend ./backend 
   - docker build -t alstjrchl97/docker-nginx ./nginx
 
 # 도커 허브 로그인
@@ -46,5 +46,6 @@ deploy:
   bucket_path: "docker-fullstack-app"
   on: #main 브랜치 푸시에만 배포가 이루어지도록.
     branch: main
+    
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_ACCESS_KEY
