@@ -29,3 +29,23 @@ after_success:
   - docker push alstjrchl97/docker-front
   - docker push alstjrchl97/docker-backend
   - docker push alstjrchl97/docker-nginx
+
+
+# -------- Deploy 부분 ----------
+
+deploy:
+  #외부 서비스 표시 (s3, elasticbeanstalk, firebase 등)
+  provider: elasticbeanstalk
+  # 사용하고 있는 AWS의 서비스의 물리적 장소
+  region: "us-east-1"
+  # APP 이름
+  app: "docker-fullstack-app"
+  # env 이름
+  env: "Dockerfullstackapp-env"
+  bucket_name: elasticbeanstalk-us-east-1-053195428231
+  bucket_path: "docker-fullstack-app"
+  on: #main 브랜치 푸시에만 배포가 이루어지도록.
+    branch: main 
+  
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
