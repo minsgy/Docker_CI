@@ -26,7 +26,7 @@ after_success:
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
 # 빌드 된 이미지 도커 허브에 PUSH 하기
-  - docker push alstjrchl97/docker-front
+  - docker push alstjrchl97/docker-frontend
   - docker push alstjrchl97/docker-backend
   - docker push alstjrchl97/docker-nginx
 
